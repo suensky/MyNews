@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,40 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UITabBarController *tabBar = [[UITabBarController alloc] init];
+    
+    ViewController *viewController = [[ViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    // UIViewController *controller1 = [[UIViewController alloc] init];
+    // navigationController.view.backgroundColor = [UIColor redColor];
+    navigationController.tabBarItem.title = @"News";
+    navigationController.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/page@2x.png"];
+    navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/page_selected@2x.png"];
+    
+    UIViewController *controller2 = [[UIViewController alloc] init];
+    controller2.view.backgroundColor = [UIColor greenColor];
+    controller2.tabBarItem.title = @"Video";
+    controller2.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/video@2x.png"];
+    controller2.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/video_selected@2x.png"];
+    
+    UIViewController *controller3 = [[UIViewController alloc] init];
+    controller3.view.backgroundColor = [UIColor blueColor];
+    controller3.tabBarItem.title = @"Recommended";
+    controller3.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/like@2x.png"];
+    controller3.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/like_selected@2x.png"];
+    
+    UIViewController *controller4 = [[UIViewController alloc] init];
+    controller4.view.backgroundColor = [UIColor yellowColor];
+    controller4.tabBarItem.title = @"Mine";
+    controller4.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/home@2x.png"];
+    controller4.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/home_selected@2x.png"];
+    
+    [tabBar setViewControllers:@[navigationController, controller2, controller3, controller4]];
+    
+    self.window.rootViewController = tabBar;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
